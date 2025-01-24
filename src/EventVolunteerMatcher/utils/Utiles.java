@@ -263,4 +263,13 @@ public class Utiles {
         System.out.println(event.getId() + " - " + event.getEventName()+"     "+event.getEventDate().format(formatter)+"     "+event.getLocation()+"     "+event.getMinimumAge()+"+" + "     "+event.getParticipantList().size()+"/"+event.getVolunteerLimit());
     }
 
+    public boolean checkParticipant(Volunteer volunteer,Event event){
+        for(int i = 0 ; i < event.getParticipantList().size(); i++){
+            Volunteer participant = event.getParticipantList().get(i) ;
+            if(participant.equals(volunteer)){
+                return true ;
+            }
+        }
+        return false ;
+    }
 }

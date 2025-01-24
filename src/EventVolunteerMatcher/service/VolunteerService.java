@@ -214,13 +214,19 @@ public class VolunteerService {
                 System.out.println("Process terminated");
                 break;
             }
-            else if(option >= DataBase.eventList.size() || option < 0){
+            else if(option > DataBase.eventList.size() || option < 0){
                 System.out.println("Invalid choice, please enter again");
             }
             else {
                 Event chosenEvent = DataBase.eventList.get(option-1) ;
                 if(chosenEvent.getMinimumAge() > volunteer.getAge()){
                     System.out.println("You do not meet the age requirement for this event");
+                }
+                else if(chosenEvent.getMainOrganizer().equals(volunteer)){
+                    System.out.println("You can't sign up for your own event");
+                }
+                else if(utiles.checkParticipant(volunteer,chosenEvent)){
+                    System.out.println("You have already participated in this event");
                 }
                 else{
                     System.out.println("Do you confirm that you want to participate? Yes/No");

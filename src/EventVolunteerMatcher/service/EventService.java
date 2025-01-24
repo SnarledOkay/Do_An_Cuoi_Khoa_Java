@@ -123,9 +123,13 @@ public class EventService {
                 }
             }
         }
-        if(volunteer.isAdmin()) System.out.println("Event has been created");
+        int eventID = DataBase.eventList.size()+1 ;
+        if(volunteer.isAdmin()){
+            System.out.println("Event has been created");
+            volunteer.getYourEvent().add(new Event(eventID,eventName,eventDate,location,chooseCategory,minAge,volunteer,co_organizerList,volunteerLimit,volunteer.getPhoneNumber(),volunteer.getGmail(),participantList)) ;
+        }
         else System.out.println("Your request to create this event has been sent to Admin");
-        return new Event(DataBase.eventList.size()+1,eventName,eventDate,location,chooseCategory,minAge,volunteer,co_organizerList,volunteerLimit,volunteer.getPhoneNumber(),volunteer.getGmail(),participantList) ;
+        return new Event(eventID,eventName,eventDate,location,chooseCategory,minAge,volunteer,co_organizerList,volunteerLimit,volunteer.getPhoneNumber(),volunteer.getGmail(),participantList) ;
     }
     //tim kiem theo dia diem
     public void searchEventByLocation(String location){
@@ -251,7 +255,7 @@ public class EventService {
     }
     //sap xep tat ca su kien theo dia diem
     public void sortEventByLocation(){
-        ArrayList<Event> allEvent = DataBase.eventList ;
+        ArrayList<Event> allEvent = new ArrayList<>(DataBase.eventList) ;
         allEvent.sort(Comparator.comparing(Event::getLocation));
         int number = 0 ;
         for(Event event:allEvent){
@@ -262,7 +266,7 @@ public class EventService {
     }
     //sap xep tât ca su kien theo ngay dien ra
     public void sortEventByDate(){
-        ArrayList<Event> allEvent = DataBase.eventList ;
+        ArrayList<Event> allEvent = new ArrayList<>(DataBase.eventList) ;
         allEvent.sort(Comparator.comparing(Event::getEventDate));
         for(Event event:allEvent){
             utiles.printEvent(event);
@@ -270,7 +274,7 @@ public class EventService {
     }
     //sap xep tat ca su kien theo yeu cau về tuoi
     public void sortEventByAge(){
-        ArrayList<Event> allEvent = DataBase.eventList ;
+        ArrayList<Event> allEvent = new ArrayList<>(DataBase.eventList) ;
         allEvent.sort(Comparator.comparing(Event::getMinimumAge));
         for(Event event:allEvent){
             utiles.printEvent(event);
@@ -278,7 +282,7 @@ public class EventService {
     }
     //sap xep tat ca su kien theo so slot còn lai
     public void sortEventByAvailability(){
-        ArrayList<Event> allEvent = DataBase.eventList ;
+        ArrayList<Event> allEvent = new ArrayList<>(DataBase.eventList) ;
         allEvent.sort(Comparator.comparing(Event::getDifference));
         for(Event event:allEvent){
             utiles.printEvent(event);

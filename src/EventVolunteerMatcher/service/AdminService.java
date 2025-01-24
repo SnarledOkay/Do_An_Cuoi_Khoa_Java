@@ -11,37 +11,6 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class AdminService {
-//    public void confirmParticipation(Scanner scanner){
-//        if(DataBase.acceptParticipation.isEmpty()) System.out.println("There's currently no participation request pending");
-//        else{
-//            for(Pair<Volunteer, Event> pair:DataBase.acceptParticipation){
-//                Volunteer pendingVolunteer = pair.getVolunteer() ;
-//                Event targetEvent = pair.getEvent() ;
-//                System.out.println("Volunteer: " + pendingVolunteer.getUsername());
-//                System.out.println("Age: " + pendingVolunteer.getAge());
-//                System.out.println("Events participated: " + pendingVolunteer.getPastEvent().size());
-//                System.out.println("Event: " + targetEvent.getEventName());
-//                System.out.println("Age requirement: " + targetEvent.getMinimumAge() + "+");
-//                System.out.println("Description: " + targetEvent.getTypeOfVolunteerWork());
-//                System.out.println("Current number of participants: " + targetEvent.getParticipantList().size() + "/" + targetEvent.getVolunteerLimit());
-//                System.out.println("\nDo you confirm this request to participate? Y/N");
-//                String confirmation = scanner.nextLine() ;
-//                if(confirmation.equalsIgnoreCase("Y")){
-//                    System.out.println("You have confirmed request to participate");
-//                    pendingVolunteer.getRequestAccepted().add(targetEvent) ;
-//                    targetEvent.getParticipantList().add(pendingVolunteer) ;
-//                }
-//                else{
-//                    System.out.println("You have denied request to participate");
-//                    pendingVolunteer.getRequestRejected().add(targetEvent) ;
-//                }
-//                System.out.println("Do you want to continue? Press 'Y' to confirm or press any key to escape");
-//                confirmation = scanner.nextLine();
-//                if(!confirmation.equalsIgnoreCase("Y")) break ;
-//            }
-//            System.out.println("All ");
-//        }
-//    }
 
     Utiles utiles = new Utiles() ;
     private VolunteerService volunteerService ;
