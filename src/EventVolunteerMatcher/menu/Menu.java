@@ -239,16 +239,20 @@ public class Menu {
                 break ;
             case 11:
                 volunteerService.viewEventsYouCreated(volunteer);
-                System.out.print("Choose event that has finished: ");
+                System.out.print("Choose event that has finished (enter 0 to escape): ");
                 int chooseEvent=0 ;
                 while(true){
                     chooseEvent = utiles.enterInteger(scanner) ;
-                    if(chooseEvent < 0 || chooseEvent >= volunteer.getYourEvent().size()){
+                    if(chooseEvent == 0){
+                        System.out.println("Process terminated");
+                        return ;
+                    }
+                    if(chooseEvent < 0 || chooseEvent > volunteer.getYourEvent().size()){
                         System.out.println("Invalid choice, please enter again");
                     }
                     else break ;
                 }
-                Event eventCompleted = volunteer.getYourEvent().get(chooseEvent) ;
+                Event eventCompleted = volunteer.getYourEvent().get(chooseEvent-1) ;
                 volunteerService.completeAnEvent(scanner,eventCompleted);
                 break;
             case 12:

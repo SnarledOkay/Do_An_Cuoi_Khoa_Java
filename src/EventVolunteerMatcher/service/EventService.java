@@ -143,8 +143,7 @@ public class EventService {
         }
         System.out.println("There are " + number + " events that will be organized in this city");
         for(int i = 0 ; i < number ; i++){
-            Event event = DataBase.eventSatisfyCondition.get(i) ;
-            System.out.println(event.getId()+". " + event.getEventName() + "     "+event.getEventDate().format(formatter)+"     "+event.getMinimumAge()+"+"+"     "+event.getParticipantList().size()+"/"+ event.getVolunteerLimit());
+            utiles.printEvent(DataBase.eventSatisfyCondition.get(i));
         }
         DataBase.eventSatisfyCondition.clear();
     }
@@ -158,10 +157,9 @@ public class EventService {
                 DataBase.eventSatisfyCondition.add(event) ;
             }
         }
-        System.out.println("There are " + number + " events organized on this day");
+        System.out.println("There are " + number + " events organized after this day");
         for(int i = 0 ; i < number ; i++){
-            Event event = DataBase.eventSatisfyCondition.get(i) ;
-            System.out.println(event.getId()+". " + event.getEventName() + "     "+event.getEventDate().format(formatter)+ "     " + event.getLocation()+"     "+event.getMinimumAge()+"+"+"     "+event.getParticipantList().size()+"/"+ event.getVolunteerLimit());
+            utiles.printEvent(DataBase.eventSatisfyCondition.get(i));
         }
         DataBase.eventSatisfyCondition.clear();
     }
@@ -177,9 +175,8 @@ public class EventService {
             }
         }
         System.out.println("There are " + number+" events categorized as " + DataBase.volunteerWorkList.get(option));
-        for(int i = 0 ; i < number ; i++){
-            Event event = DataBase.eventSatisfyCondition.get(i) ;
-            System.out.println(event.getId()+". " + event.getEventName() + "     "+event.getEventDate().format(formatter)+ "     " + event.getLocation()+"     "+event.getMinimumAge()+"+"+"     "+event.getParticipantList().size()+"/"+ event.getVolunteerLimit());
+        for(int i = 0 ; i < DataBase.eventSatisfyCondition.size() ; i++){
+            utiles.printEvent(DataBase.eventSatisfyCondition.get(i));
         }
     }
     //tim kiem theo dia diem + ngay dien ra
@@ -195,8 +192,7 @@ public class EventService {
         }
         System.out.println("There are " + number + " events that satisfy the condition");
         for(int i = 0 ; i < DataBase.eventSatisfyCondition.size() ; i++){
-            Event event = DataBase.eventSatisfyCondition.get(i) ;
-            System.out.println(event.getId()+". " + event.getEventName()+"     "+event.getLocation()+"     "+event.getEventDate().format(formatter)+"     "+DataBase.volunteerWorkList.get(event.getTypeOfVolunteerWork())+"     "+event.getMinimumAge()+"+"+"     "+event.getParticipantList().size()+"/"+event.getVolunteerLimit());
+            utiles.printEvent(DataBase.eventSatisfyCondition.get(i));
         }
         DataBase.eventSatisfyCondition.clear();
     }
@@ -212,8 +208,7 @@ public class EventService {
         }
         System.out.println("There are " + number + " events that satisfy the condition");
         for(int i = 0 ; i < DataBase.eventSatisfyCondition.size() ; i++){
-            Event event = DataBase.eventSatisfyCondition.get(i) ;
-            System.out.println(event.getId()+". " + event.getEventName()+"     "+event.getLocation()+"     "+event.getEventDate().format(formatter)+"     "+DataBase.volunteerWorkList.get(event.getTypeOfVolunteerWork())+"     "+event.getMinimumAge()+"+"+"     "+event.getParticipantList().size()+"/"+event.getVolunteerLimit());
+            utiles.printEvent(DataBase.eventSatisfyCondition.get(i));
         }
         DataBase.eventSatisfyCondition.clear();
     }
@@ -230,8 +225,7 @@ public class EventService {
         }
         System.out.println("There are " + number + " events that satisfy the condition");
         for(int i = 0 ; i < DataBase.eventSatisfyCondition.size() ; i++){
-            Event event = DataBase.eventSatisfyCondition.get(i) ;
-            System.out.println(event.getId()+". " + event.getEventName()+"     "+event.getLocation()+"     "+event.getEventDate().format(formatter)+"     "+DataBase.volunteerWorkList.get(event.getTypeOfVolunteerWork())+"     "+event.getMinimumAge()+"+"+"     "+event.getParticipantList().size()+"/"+event.getVolunteerLimit());
+            utiles.printEvent(DataBase.eventSatisfyCondition.get(i));
         }
         DataBase.eventSatisfyCondition.clear();
     }

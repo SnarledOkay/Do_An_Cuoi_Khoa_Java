@@ -254,6 +254,7 @@ public class VolunteerService {
     }
     //chap nhan don dang ky tham gia su kien cua ng dung khac
     public void confirmParticipation(Scanner scanner, Volunteer volunteer){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy") ;
         if(volunteer.getYourEvent().isEmpty()) System.out.println("You can't use this function because you are currently hosting no event");
         else{
             System.out.println("There are " + volunteer.getPendingRequest().size() + " requests pending: ");
@@ -265,11 +266,11 @@ public class VolunteerService {
                 System.out.println("Place of living: " + targetVolunteer.getCurrentLocation());
                 System.out.println("Contact: Phone: " + targetVolunteer.getPhoneNumber() + " / Email: " + targetVolunteer.getGmail());
 
-                System.out.println("Request to participate: " + targetEvent.getEventName());
-                System.out.println("Date: " + targetEvent.getEventDate());
+                System.out.println("\nRequest to participate the event: " + targetEvent.getEventName());
+                System.out.println("Date: " + targetEvent.getEventDate().format(formatter));
                 System.out.println("Age requirement: " + targetEvent.getMinimumAge() + "+");
                 System.out.println("Location: " + targetEvent.getLocation());
-                System.out.println("Description: " + targetEvent.getTypeOfVolunteerWork());
+                System.out.println("Category: " + targetEvent.getTypeOfVolunteerWork());
 
                 System.out.println("Do you confirm request to participate?");
                 System.out.println("Yes / No (Any other choice will be automatically considered 'no')");
@@ -297,9 +298,12 @@ public class VolunteerService {
             option = utiles.enterInteger(scanner) ;
             if(option == 0){
                 System.out.println("Returning to main menu...");
-                break ;
+                return;
             }
-            else if(option < 0 || option >= DataBase.volunteerList.size()){
+            else if(volunteerReporter.equals(DataBase.volunteerList.get(option-1))){
+                System.out.println("You can't report yourself");
+            }
+            else if(option < 0 || option > DataBase.volunteerList.size()){
                 System.out.println("Error, user doesn't exist");
             }
             else{
